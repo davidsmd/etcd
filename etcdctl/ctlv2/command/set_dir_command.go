@@ -15,7 +15,7 @@
 package command
 
 import (
-	"github.com/coreos/etcd/client"
+	"github.com/davidsmd/etcd/client"
 	"github.com/urfave/cli"
 )
 

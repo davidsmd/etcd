@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "storage_recorder.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/pkg/mock/mockstorage",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/testutil:go_default_library",
+        "//raft:go_default_library",
+        "//raft/raftpb:go_default_library",
+    ],
+)

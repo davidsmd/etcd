@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["syncer.go"],
+    importpath = "github.com/davidsmd/etcd/clientv3/mirror",
+    visibility = ["//visibility:public"],
+    deps = ["//clientv3:go_default_library"],
+)

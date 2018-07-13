@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "store_recorder.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/pkg/mock/mockstore",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/testutil:go_default_library",
+        "//store:go_default_library",
+    ],
+)

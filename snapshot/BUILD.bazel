@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "util.go",
+        "v3_snapshot.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/snapshot",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//etcdserver:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//etcdserver/membership:go_default_library",
+        "//lease:go_default_library",
+        "//mvcc:go_default_library",
+        "//mvcc/backend:go_default_library",
+        "//pkg/fileutil:go_default_library",
+        "//pkg/types:go_default_library",
+        "//raft:go_default_library",
+        "//raft/raftpb:go_default_library",
+        "//snap:go_default_library",
+        "//store:go_default_library",
+        "//wal:go_default_library",
+        "//wal/walpb:go_default_library",
+        "@com_github_coreos_bbolt//:go_default_library",
+        "@org_uber_go_zap//:go_default_library",
+    ],
+)

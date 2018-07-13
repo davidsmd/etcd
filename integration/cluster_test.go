@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coreos/etcd/client"
-	"github.com/coreos/etcd/etcdserver"
-	"github.com/coreos/etcd/pkg/testutil"
+	"github.com/davidsmd/etcd/client"
+	"github.com/davidsmd/etcd/etcdserver"
+	"github.com/davidsmd/etcd/pkg/testutil"
 
 	"github.com/coreos/pkg/capnslog"
 )

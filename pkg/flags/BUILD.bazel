@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "flag.go",
+        "strings.go",
+        "urls.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/pkg/flags",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/types:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@com_github_spf13_pflag//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "flag_test.go",
+        "strings_test.go",
+        "urls_test.go",
+    ],
+    embed = [":go_default_library"],
+)

@@ -25,10 +25,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coreos/etcd/clientv3"
-	"github.com/coreos/etcd/integration"
-	"github.com/coreos/etcd/pkg/testutil"
-	"github.com/coreos/etcd/pkg/transport"
+	"github.com/davidsmd/etcd/clientv3"
+	"github.com/davidsmd/etcd/integration"
+	"github.com/davidsmd/etcd/pkg/testutil"
+	"github.com/davidsmd/etcd/pkg/transport"
 
 	grpcprom "github.com/grpc-ecosystem/go-grpc-prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"

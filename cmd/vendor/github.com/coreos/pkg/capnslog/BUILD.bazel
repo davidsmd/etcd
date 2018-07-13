@@ -1,0 +1,52 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "formatters.go",
+        "glog_formatter.go",
+        "init.go",
+        "init_windows.go",
+        "journald_formatter.go",
+        "log_hijack.go",
+        "logmap.go",
+        "pkg_logger.go",
+        "syslog_formatter.go",
+    ],
+    importmap = "github.com/davidsmd/etcd/cmd/vendor/github.com/coreos/pkg/capnslog",
+    importpath = "github.com/coreos/pkg/capnslog",
+    visibility = ["//visibility:public"],
+    deps = select({
+        "@io_bazel_rules_go//go/platform:android": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:darwin": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:dragonfly": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:freebsd": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:linux": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:nacl": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:netbsd": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:openbsd": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:plan9": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "@io_bazel_rules_go//go/platform:solaris": [
+            "//cmd/vendor/github.com/coreos/go-systemd/journal:go_default_library",
+        ],
+        "//conditions:default": [],
+    }),
+)

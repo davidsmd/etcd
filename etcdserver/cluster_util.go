@@ -22,10 +22,10 @@ import (
 	"sort"
 	"time"
 
-	"github.com/coreos/etcd/etcdserver/membership"
-	"github.com/coreos/etcd/pkg/types"
-	"github.com/coreos/etcd/version"
 	"github.com/coreos/go-semver/semver"
+	"github.com/davidsmd/etcd/etcdserver/membership"
+	"github.com/davidsmd/etcd/pkg/types"
+	"github.com/davidsmd/etcd/version"
 )
 
 // isMemberBootstrapped tries to check if the given member has been bootstrapped

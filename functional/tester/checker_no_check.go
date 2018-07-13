@@ -14,7 +14,7 @@
 
 package tester
 
-import "github.com/coreos/etcd/functional/rpcpb"
+import "github.com/davidsmd/etcd/functional/rpcpb"
 
 type noCheck struct{}
 

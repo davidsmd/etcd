@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "director.go",
+        "doc.go",
+        "metrics.go",
+        "proxy.go",
+        "reverse.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/proxy/httpproxy",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//etcdserver/api/v2http/httptypes:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+        "@org_golang_x_net//http2:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "director_test.go",
+        "proxy_test.go",
+        "reverse_test.go",
+    ],
+    embed = [":go_default_library"],
+)

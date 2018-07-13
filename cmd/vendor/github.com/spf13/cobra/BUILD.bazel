@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "bash_completions.go",
+        "cobra.go",
+        "command.go",
+        "doc_util.go",
+        "man_docs.go",
+        "md_docs.go",
+    ],
+    importmap = "github.com/davidsmd/etcd/cmd/vendor/github.com/spf13/cobra",
+    importpath = "github.com/spf13/cobra",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cmd/vendor/github.com/cpuguy83/go-md2man/md2man:go_default_library",
+        "//cmd/vendor/github.com/inconshreveable/mousetrap:go_default_library",
+        "//cmd/vendor/github.com/spf13/pflag:go_default_library",
+    ],
+)

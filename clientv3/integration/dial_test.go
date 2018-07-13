@@ -21,11 +21,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coreos/etcd/clientv3"
-	pb "github.com/coreos/etcd/etcdserver/etcdserverpb"
-	"github.com/coreos/etcd/integration"
-	"github.com/coreos/etcd/pkg/testutil"
-	"github.com/coreos/etcd/pkg/transport"
+	"github.com/davidsmd/etcd/clientv3"
+	pb "github.com/davidsmd/etcd/etcdserver/etcdserverpb"
+	"github.com/davidsmd/etcd/integration"
+	"github.com/davidsmd/etcd/pkg/testutil"
+	"github.com/davidsmd/etcd/pkg/transport"
 )
 
 var (

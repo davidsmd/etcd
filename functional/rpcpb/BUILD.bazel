@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "rpcpb_proto",
+    srcs = ["rpc.proto"],
+    visibility = ["//visibility:public"],
+    deps = ["//github.com/gogo/protobuf/gogoproto:gogoproto_proto"],
+)
+
+go_proto_library(
+    name = "rpcpb_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "github.com/davidsmd/etcd/functional/rpcpb",
+    proto = ":rpcpb_proto",
+    visibility = ["//visibility:public"],
+    deps = ["//github.com/gogo/protobuf/gogoproto:go_default_library"],
+)
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "etcd_config.go",
+        "member.go",
+    ],
+    embed = [":rpcpb_go_proto"],
+    importpath = "github.com/davidsmd/etcd/functional/rpcpb",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//pkg/transport:go_default_library",
+        "//snapshot:go_default_library",
+        "@com_github_dustin_go_humanize//:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//credentials:go_default_library",
+        "@org_uber_go_zap//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["etcd_config_test.go"],
+    embed = [":go_default_library"],
+)

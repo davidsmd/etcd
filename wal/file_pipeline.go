@@ -19,7 +19,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/coreos/etcd/pkg/fileutil"
+	"github.com/davidsmd/etcd/pkg/fileutil"
 )
 
 // filePipeline pipelines allocating disk space

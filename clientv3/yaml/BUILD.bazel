@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["config.go"],
+    importpath = "github.com/davidsmd/etcd/clientv3/yaml",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//pkg/tlsutil:go_default_library",
+        "@com_github_ghodss_yaml//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["config_test.go"],
+    embed = [":go_default_library"],
+    deps = ["@com_github_ghodss_yaml//:go_default_library"],
+)

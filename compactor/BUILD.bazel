@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "compactor.go",
+        "doc.go",
+        "periodic.go",
+        "revision.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/compactor",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//mvcc:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@com_github_jonboulle_clockwork//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "compactor_test.go",
+        "periodic_test.go",
+        "revision_test.go",
+    ],
+    embed = [":go_default_library"],
+    deps = [
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//pkg/testutil:go_default_library",
+        "@com_github_jonboulle_clockwork//:go_default_library",
+    ],
+)

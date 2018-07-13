@@ -19,7 +19,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/coreos/etcd/clientv3/concurrency"
+	"github.com/davidsmd/etcd/clientv3/concurrency"
 
 	"github.com/spf13/cobra"
 )

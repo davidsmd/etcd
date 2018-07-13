@@ -22,11 +22,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coreos/etcd/clientv3"
-	"github.com/coreos/etcd/clientv3/concurrency"
-	"github.com/coreos/etcd/etcdserver/api/v3rpc/rpctypes"
-	"github.com/coreos/etcd/integration"
-	"github.com/coreos/etcd/pkg/testutil"
+	"github.com/davidsmd/etcd/clientv3"
+	"github.com/davidsmd/etcd/clientv3/concurrency"
+	"github.com/davidsmd/etcd/etcdserver/api/v3rpc/rpctypes"
+	"github.com/davidsmd/etcd/integration"
+	"github.com/davidsmd/etcd/pkg/testutil"
 
 	"google.golang.org/grpc"
 )

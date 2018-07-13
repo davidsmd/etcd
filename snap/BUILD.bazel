@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "db.go",
+        "message.go",
+        "metrics.go",
+        "snapshotter.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/snap",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/fileutil:go_default_library",
+        "//pkg/ioutil:go_default_library",
+        "//pkg/pbutil:go_default_library",
+        "//raft:go_default_library",
+        "//raft/raftpb:go_default_library",
+        "//snap/snappb:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["snapshotter_test.go"],
+    embed = [":go_default_library"],
+    deps = ["//raft/raftpb:go_default_library"],
+)

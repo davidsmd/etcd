@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["store.go"],
+    importpath = "github.com/davidsmd/etcd/proxy/grpcproxy/cache",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//etcdserver/api/v3rpc/rpctypes:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//pkg/adt:go_default_library",
+        "@com_github_golang_groupcache//lru:go_default_library",
+    ],
+)

@@ -23,11 +23,11 @@ import (
 	"path"
 	"strings"
 
-	pioutil "github.com/coreos/etcd/pkg/ioutil"
-	"github.com/coreos/etcd/pkg/types"
-	"github.com/coreos/etcd/raft/raftpb"
-	"github.com/coreos/etcd/snap"
-	"github.com/coreos/etcd/version"
+	pioutil "github.com/davidsmd/etcd/pkg/ioutil"
+	"github.com/davidsmd/etcd/pkg/types"
+	"github.com/davidsmd/etcd/raft/raftpb"
+	"github.com/davidsmd/etcd/snap"
+	"github.com/davidsmd/etcd/version"
 )
 
 const (

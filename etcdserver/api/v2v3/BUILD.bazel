@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "cluster.go",
+        "doc.go",
+        "server.go",
+        "store.go",
+        "watcher.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/etcdserver/api/v2v3",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//clientv3/concurrency:go_default_library",
+        "//error:go_default_library",
+        "//etcdserver:go_default_library",
+        "//etcdserver/api:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//etcdserver/membership:go_default_library",
+        "//mvcc/mvccpb:go_default_library",
+        "//pkg/types:go_default_library",
+        "//store:go_default_library",
+        "@com_github_coreos_go_semver//semver:go_default_library",
+    ],
+)

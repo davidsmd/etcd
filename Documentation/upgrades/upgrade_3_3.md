@@ -19,7 +19,7 @@ Highlighted breaking changes in 3.3.
 Before and after (e.g. [k8s.io/kubernetes/test/e2e_node/services/etcd.go](https://github.com/kubernetes/kubernetes/blob/release-1.8/test/e2e_node/services/etcd.go#L50-L55))
 
 ```diff
-import "github.com/coreos/etcd/etcdserver"
+import "github.com/davidsmd/etcd/etcdserver"
 
 type EtcdServer struct {
 	*etcdserver.EtcdServer
@@ -66,7 +66,7 @@ WARNING: 2017/11/02 11:35:51 grpc: addrConn.resetTransport failed to create clie
 From v3.3, gRPC server logs are disabled by default.
 
 ```go
-import "github.com/coreos/etcd/embed"
+import "github.com/davidsmd/etcd/embed"
 
 cfg := &embed.Config{Debug: false}
 cfg.SetupLogging()
@@ -121,8 +121,8 @@ etcdctl put foo [LARGE VALUE...]
 Or configure `embed.Config.MaxRequestBytes` field:
 
 ```go
-import "github.com/coreos/etcd/embed"
-import "github.com/coreos/etcd/etcdserver/api/v3rpc/rpctypes"
+import "github.com/davidsmd/etcd/embed"
+import "github.com/davidsmd/etcd/etcdserver/api/v3rpc/rpctypes"
 
 // limit requests to 5 MiB
 cfg := embed.NewConfig()
@@ -143,7 +143,7 @@ etcd --max-request-bytes 1048576
 ```
 
 ```go
-import "github.com/coreos/etcd/clientv3"
+import "github.com/davidsmd/etcd/clientv3"
 
 cli, _ := clientv3.New(clientv3.Config{
     Endpoints: []string{"127.0.0.1:2379"},
@@ -291,14 +291,14 @@ cli.Put(context.Background(), "f", "v")
 Before
 
 ```go
-import "github.com/coreos/etcd/clientv3"
+import "github.com/davidsmd/etcd/clientv3"
 clientv3.SetLogger(log.New(os.Stderr, "grpc: ", 0))
 ```
 
 After
 
 ```go
-import "github.com/coreos/etcd/clientv3"
+import "github.com/davidsmd/etcd/clientv3"
 import "google.golang.org/grpc/grpclog"
 clientv3.SetLogger(grpclog.NewLoggerV2(os.Stderr, os.Stderr, os.Stderr))
 

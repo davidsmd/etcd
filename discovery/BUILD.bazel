@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["discovery.go"],
+    importpath = "github.com/davidsmd/etcd/discovery",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//client:go_default_library",
+        "//pkg/transport:go_default_library",
+        "//pkg/types:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@com_github_jonboulle_clockwork//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["discovery_test.go"],
+    embed = [":go_default_library"],
+    deps = [
+        "//client:go_default_library",
+        "@com_github_jonboulle_clockwork//:go_default_library",
+    ],
+)

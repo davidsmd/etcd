@@ -17,8 +17,8 @@ package grpcproxy
 import (
 	"context"
 
-	"github.com/coreos/etcd/clientv3"
-	"github.com/coreos/etcd/etcdserver/api/v3election/v3electionpb"
+	"github.com/davidsmd/etcd/clientv3"
+	"github.com/davidsmd/etcd/etcdserver/api/v3election/v3electionpb"
 )
 
 type electionProxy struct {

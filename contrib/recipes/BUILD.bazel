@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "barrier.go",
+        "client.go",
+        "doc.go",
+        "double_barrier.go",
+        "key.go",
+        "priority_queue.go",
+        "queue.go",
+        "rwmutex.go",
+        "watch.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/contrib/recipes",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//clientv3/concurrency:go_default_library",
+        "//mvcc/mvccpb:go_default_library",
+    ],
+)

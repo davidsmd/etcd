@@ -31,7 +31,7 @@ Highlighted breaking changes in 3.4.
 Deprecated `pkg/transport.TLSInfo.CAFile` field.
 
 ```diff
-import "github.com/coreos/etcd/pkg/transport"
+import "github.com/davidsmd/etcd/pkg/transport"
 
 tlsInfo := transport.TLSInfo{
     CertFile: "/tmp/test-certs/test.pem",

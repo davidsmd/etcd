@@ -27,19 +27,19 @@ import (
 	"sync"
 	"time"
 
-	"github.com/coreos/etcd/compactor"
-	"github.com/coreos/etcd/etcdserver"
-	"github.com/coreos/etcd/etcdserver/api/etcdhttp"
-	"github.com/coreos/etcd/etcdserver/api/v2http"
-	"github.com/coreos/etcd/etcdserver/api/v2v3"
-	"github.com/coreos/etcd/etcdserver/api/v3client"
-	"github.com/coreos/etcd/etcdserver/api/v3rpc"
-	"github.com/coreos/etcd/pkg/cors"
-	"github.com/coreos/etcd/pkg/debugutil"
-	runtimeutil "github.com/coreos/etcd/pkg/runtime"
-	"github.com/coreos/etcd/pkg/transport"
-	"github.com/coreos/etcd/pkg/types"
-	"github.com/coreos/etcd/rafthttp"
+	"github.com/davidsmd/etcd/compactor"
+	"github.com/davidsmd/etcd/etcdserver"
+	"github.com/davidsmd/etcd/etcdserver/api/etcdhttp"
+	"github.com/davidsmd/etcd/etcdserver/api/v2http"
+	"github.com/davidsmd/etcd/etcdserver/api/v2v3"
+	"github.com/davidsmd/etcd/etcdserver/api/v3client"
+	"github.com/davidsmd/etcd/etcdserver/api/v3rpc"
+	"github.com/davidsmd/etcd/pkg/cors"
+	"github.com/davidsmd/etcd/pkg/debugutil"
+	runtimeutil "github.com/davidsmd/etcd/pkg/runtime"
+	"github.com/davidsmd/etcd/pkg/transport"
+	"github.com/davidsmd/etcd/pkg/types"
+	"github.com/davidsmd/etcd/rafthttp"
 
 	"github.com/coreos/pkg/capnslog"
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
@@ -48,7 +48,7 @@ import (
 	"google.golang.org/grpc/keepalive"
 )
 
-var plog = capnslog.NewPackageLogger("github.com/coreos/etcd", "embed")
+var plog = capnslog.NewPackageLogger("github.com/davidsmd/etcd", "embed")
 
 const (
 	// internal fd usage includes disk usage and transport usage.

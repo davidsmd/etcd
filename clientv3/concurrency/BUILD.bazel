@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "election.go",
+        "key.go",
+        "mutex.go",
+        "session.go",
+        "stm.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/clientv3/concurrency",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//mvcc/mvccpb:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "example_election_test.go",
+        "example_mutex_test.go",
+        "example_stm_test.go",
+        "main_test.go",
+    ],
+    embed = [":go_default_library"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//integration:go_default_library",
+        "//pkg/testutil:go_default_library",
+    ],
+)

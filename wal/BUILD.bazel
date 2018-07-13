@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "decoder.go",
+        "doc.go",
+        "encoder.go",
+        "file_pipeline.go",
+        "metrics.go",
+        "repair.go",
+        "util.go",
+        "wal.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/wal",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/crc:go_default_library",
+        "//pkg/fileutil:go_default_library",
+        "//pkg/ioutil:go_default_library",
+        "//pkg/pbutil:go_default_library",
+        "//raft:go_default_library",
+        "//raft/raftpb:go_default_library",
+        "//wal/walpb:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "record_test.go",
+        "repair_test.go",
+        "wal_bench_test.go",
+        "wal_test.go",
+    ],
+    embed = [":go_default_library"],
+    deps = [
+        "//pkg/fileutil:go_default_library",
+        "//pkg/pbutil:go_default_library",
+        "//raft/raftpb:go_default_library",
+        "//wal/walpb:go_default_library",
+    ],
+)

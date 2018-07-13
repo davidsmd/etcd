@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "v3client.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/etcdserver/api/v3client",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//etcdserver:go_default_library",
+        "//etcdserver/api/v3rpc:go_default_library",
+        "//proxy/grpcproxy/adapter:go_default_library",
+    ],
+)

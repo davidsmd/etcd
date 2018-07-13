@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "kv.go",
+        "lease.go",
+        "util.go",
+        "watch.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/clientv3/namespace",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//etcdserver/api/v3rpc/rpctypes:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["util_test.go"],
+    embed = [":go_default_library"],
+)

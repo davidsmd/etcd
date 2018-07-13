@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "kv.go",
+        "util.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/clientv3/ordering",
+    visibility = ["//visibility:public"],
+    deps = ["//clientv3:go_default_library"],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "kv_test.go",
+        "logger_test.go",
+        "util_test.go",
+    ],
+    embed = [":go_default_library"],
+    deps = [
+        "//clientv3:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//integration:go_default_library",
+        "//pkg/testutil:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@org_golang_google_grpc//grpclog:go_default_library",
+    ],
+)

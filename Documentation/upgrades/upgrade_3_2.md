@@ -27,14 +27,14 @@ The default value of `--snapshot-count` has [changed from from 10,000 to 100,000
 Before
 
 ```go
-import "github.com/coreos/etcd/clientv3"
+import "github.com/davidsmd/etcd/clientv3"
 clientv3.SetLogger(log.New(os.Stderr, "grpc: ", 0))
 ```
 
 After
 
 ```go
-import "github.com/coreos/etcd/clientv3"
+import "github.com/davidsmd/etcd/clientv3"
 import "google.golang.org/grpc/grpclog"
 clientv3.SetLogger(grpclog.NewLoggerV2(os.Stderr, os.Stderr, os.Stderr))
 
@@ -88,8 +88,8 @@ etcdctl put foo [LARGE VALUE...]
 Or configure `embed.Config.MaxRequestBytes` field:
 
 ```go
-import "github.com/coreos/etcd/embed"
-import "github.com/coreos/etcd/etcdserver/api/v3rpc/rpctypes"
+import "github.com/davidsmd/etcd/embed"
+import "github.com/davidsmd/etcd/etcdserver/api/v3rpc/rpctypes"
 
 // limit requests to 5 MiB
 cfg := embed.NewConfig()
@@ -110,7 +110,7 @@ etcd --max-request-bytes 1048576
 ```
 
 ```go
-import "github.com/coreos/etcd/clientv3"
+import "github.com/davidsmd/etcd/clientv3"
 
 cli, _ := clientv3.New(clientv3.Config{
     Endpoints: []string{"127.0.0.1:2379"},
@@ -195,14 +195,14 @@ err == nil
 Before
 
 ```go
-import "github.com/coreos/etcd/clientv3"
+import "github.com/davidsmd/etcd/clientv3"
 clientv3.NewFromConfigFile
 ```
 
 After
 
 ```go
-import clientv3yaml "github.com/coreos/etcd/clientv3/yaml"
+import clientv3yaml "github.com/davidsmd/etcd/clientv3/yaml"
 clientv3yaml.NewConfig
 ```
 

@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "network.go",
+        "node.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/raft/rafttest",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//raft:go_default_library",
+        "//raft/raftpb:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "network_test.go",
+        "node_bench_test.go",
+        "node_test.go",
+    ],
+    embed = [":go_default_library"],
+    deps = [
+        "//raft:go_default_library",
+        "//raft/raftpb:go_default_library",
+    ],
+)

@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["alarms.go"],
+    importpath = "github.com/davidsmd/etcd/alarm",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//mvcc/backend:go_default_library",
+        "//pkg/types:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+    ],
+)

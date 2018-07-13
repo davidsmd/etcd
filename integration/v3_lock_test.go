@@ -21,11 +21,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coreos/etcd/clientv3"
-	"github.com/coreos/etcd/clientv3/concurrency"
-	"github.com/coreos/etcd/contrib/recipes"
-	"github.com/coreos/etcd/mvcc/mvccpb"
-	"github.com/coreos/etcd/pkg/testutil"
+	"github.com/davidsmd/etcd/clientv3"
+	"github.com/davidsmd/etcd/clientv3/concurrency"
+	"github.com/davidsmd/etcd/contrib/recipes"
+	"github.com/davidsmd/etcd/mvcc/mvccpb"
+	"github.com/davidsmd/etcd/pkg/testutil"
 )
 
 func TestMutexSingleNode(t *testing.T) {

@@ -22,7 +22,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/coreos/etcd/pkg/fileutil"
+	"github.com/davidsmd/etcd/pkg/fileutil"
 )
 
 var ErrNoDBSnapshot = errors.New("snap: snapshot file doesn't exist")

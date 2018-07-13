@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "leader.go",
+        "queue.go",
+        "server.go",
+        "stats.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/etcdserver/stats",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//raft:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+    ],
+)

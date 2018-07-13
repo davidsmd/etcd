@@ -1,0 +1,58 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "capability.go",
+        "client.go",
+        "client_auth.go",
+        "doc.go",
+        "http.go",
+        "metrics.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/etcdserver/api/v2http",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//error:go_default_library",
+        "//etcdserver:go_default_library",
+        "//etcdserver/api:go_default_library",
+        "//etcdserver/api/etcdhttp:go_default_library",
+        "//etcdserver/api/v2http/httptypes:go_default_library",
+        "//etcdserver/auth:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//etcdserver/membership:go_default_library",
+        "//etcdserver/stats:go_default_library",
+        "//pkg/logutil:go_default_library",
+        "//pkg/types:go_default_library",
+        "//store:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+        "@com_github_jonboulle_clockwork//:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "client_auth_test.go",
+        "client_test.go",
+        "http_test.go",
+    ],
+    data = glob(["testdata/**"]),
+    embed = [":go_default_library"],
+    deps = [
+        "//error:go_default_library",
+        "//etcdserver:go_default_library",
+        "//etcdserver/api:go_default_library",
+        "//etcdserver/api/v2http/httptypes:go_default_library",
+        "//etcdserver/auth:go_default_library",
+        "//etcdserver/etcdserverpb:go_default_library",
+        "//etcdserver/membership:go_default_library",
+        "//pkg/testutil:go_default_library",
+        "//pkg/types:go_default_library",
+        "//raft/raftpb:go_default_library",
+        "//store:go_default_library",
+        "@com_github_coreos_go_semver//semver:go_default_library",
+        "@com_github_jonboulle_clockwork//:go_default_library",
+    ],
+)

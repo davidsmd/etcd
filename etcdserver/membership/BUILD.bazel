@@ -1,0 +1,42 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "cluster.go",
+        "doc.go",
+        "errors.go",
+        "member.go",
+        "store.go",
+    ],
+    importpath = "github.com/davidsmd/etcd/etcdserver/membership",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//error:go_default_library",
+        "//mvcc/backend:go_default_library",
+        "//pkg/netutil:go_default_library",
+        "//pkg/types:go_default_library",
+        "//raft:go_default_library",
+        "//raft/raftpb:go_default_library",
+        "//store:go_default_library",
+        "//version:go_default_library",
+        "@com_github_coreos_go_semver//semver:go_default_library",
+        "@com_github_coreos_pkg//capnslog:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "cluster_test.go",
+        "member_test.go",
+    ],
+    embed = [":go_default_library"],
+    deps = [
+        "//pkg/mock/mockstore:go_default_library",
+        "//pkg/testutil:go_default_library",
+        "//pkg/types:go_default_library",
+        "//raft/raftpb:go_default_library",
+        "//store:go_default_library",
+    ],
+)
